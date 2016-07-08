@@ -1,0 +1,39 @@
+如果你要 Express 3
+
+sudo npm install -g express-generator@3
+
+express 4 的话
+
+sudo npm install -g express-generator
+
+
+express全局安装不能使用require()
+ 发布于 1 年前  作者 aeolusheath  2168 次浏览  来自 问答
+环境：windows
+
+app.js
+内容：
+
+var express=require('express');
+var app=express();
+app.get('/',function(req,res){ 
+	res.send('你好 世界');
+});
+app.listen(3000,function(){ 
+	console.log('app is listening at port 3000');
+});
+1,各位大大,本地安装，通过命令：npm install express      就和app.js这个文件不安装在同一个目录下  node app.js  可以正常启动 , cd 到app.js目录下，没有通过npm start 而是
+通过 node app.js 一切正常
+
+2,全局安装，通过命令：npm install -g express     这是安装到c:users/administrator/appData/roming/npm/express  这种方式我转到 app.js的目录下，通过
+npm start  app.js 以及 node app.js 都提示找不到模块.我找了答案 去设置node_path  但是仍然提示   ，求助
+
+1 回复
+aeolusheathaeolusheath 1楼?1 年前
+已经解决了 ，是我自己的原因 node_path 没有设置对  。
+node_path 应该设置为全局express目录的上一个目录
+C:\Users\Administrator\AppData\Roaming\npm\node_modules\express
+我通过全局安装的目录如上所示 *
+我将C:\Users\Administrator\AppData\Roaming\npm\node_modules 添加到系统环境变量:NODE_PATH 中   .然后不会报错了
+
+这个博客挺有用的:http://xiaoyaojones.blog.163.com/blog/static/28370125201351501113581/
